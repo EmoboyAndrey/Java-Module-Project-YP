@@ -2,23 +2,28 @@ import java.util.Scanner;
 
 public class Calculator {
     private Scanner scanner = new Scanner(System.in);
-    private int howManyPeople; // Объявление переменной как поле класса
+    private int howManyPeople;
 
     public void setHowManyPeople() {
         while (true) {
-            int input = scanner.nextInt();
-            if (input == 1) {
-                System.out.println("Меня всё время спрашивают: знаю ли я Тайлера Дёрдена?\n Некорректный ввод данных");
-            } else if (input < 1) {
-                System.out.println("Людей не может быть меньше одного");
-            } else if (input > 1) {
-                howManyPeople = input; // Устанавливаем значение поля класса
-                break;
+            try {
+                int input = scanner.nextInt();
+                if (input == 1) {
+                    System.out.println("Некорректный ввод данных \nНельзя делить счет на одного человека");
+                } else if (input < 1) {
+                    System.out.println("Людей не может быть меньше одного");
+                } else {
+                    howManyPeople = input;
+                    break;
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Некорректный ввод. Пожалуйста, введите целое число.");
+                scanner.next();
             }
         }
     }
 
     public int getHowManyPeople() {
-        return howManyPeople; // Возвращает значение поля класса
+        return howManyPeople;
     }
 }

@@ -19,7 +19,7 @@ public class Main {
         Formatter formatter = new Formatter();
         formatter.calculateAndDisplayPayment(product.getName(), product.getSumm());
 
-        double everyoneWillPayTheAmount = calculator.getHowManyPeople()/ product.getSumm();
+        double everyoneWillPayTheAmount = product.getSumm()/calculator.getHowManyPeople();
         System.out.println("C каждого: \n"  );
         formatter.formatCurrency(everyoneWillPayTheAmount);
 

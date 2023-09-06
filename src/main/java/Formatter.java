@@ -5,7 +5,7 @@ public class Formatter {
 
         int integerPart = (int) roundedAmount;
 
-        // Определяем окончание в слове "рубль" в зависимости от целой части
+
         String currencyWord;
         if (integerPart % 10 == 1 && integerPart % 100 != 11) {
             currencyWord = "рубль";

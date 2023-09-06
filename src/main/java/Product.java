@@ -11,32 +11,46 @@ public class Product {
 
     public void namesOfGoods() {
         while (true) {
-            System.out.println("Введите товар:");
-            System.out.println("Для завершения введите 'Завершить'");
-            String newName = scanner.next();
+            try {
+                System.out.println("Введите товар:");
+                System.out.println("Для завершения введите 'Завершить'");
+                String newName = scanner.next();
 
-            if ("Завершить".equalsIgnoreCase(newName)) {
-                break;
+
+                if ("Завершить".equalsIgnoreCase(newName)) {
+
+                    break;
+                }
+
+                System.out.println("Введите стоимость товара в формате 'рубли, копейки'");
+                double newSumm = scanner.nextDouble();
+
+
+                if (newSumm < 0) {
+                    System.out.println("Отрицательная стоимость товара не допускается.");
+                    continue;
+                }
+
+                System.out.println(name + "\n" + newName + "\nНовый товар добавлен");
+
+                name = name.isEmpty() ? newName : name + "\n" + newName;
+                summ += newSumm;
+
+                System.out.println("Сумма всех товаров:\n" + summ);
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Некорректный ввод. \nПожалуйста, заново введите наименование товара и его стоимость в виде числового значения.");
+                scanner.nextLine();
             }
-
-            System.out.println("Введите стоимость товара в формате 'рубли, копейки'");
-            double newSumm = scanner.nextDouble();
-
-            System.out.println(name + "\n" + newName + "\nНовый товар добавлен");
-
-            name = name.isEmpty() ? newName : name + "\n" + newName;
-            summ += newSumm;
-
-            System.out.println("Сумма всех товаров:\n" + summ);
         }
+        scanner.close();
     }
 
-    // Геттер для получения имени товара
+
     public String getName() {
         return name;
     }
 
-    // Геттер для получения суммы товаров
+
     public double getSumm() {
         return summ;
     }
